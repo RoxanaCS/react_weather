@@ -4,6 +4,7 @@ import CircularProgress from 'material-ui/CircularProgress';
 import Location from './Location';
 import WeatherData from './WeatherData/index';
 import transformWeather from './../../services/transformWeather';
+import './style.css';
 
 // import {CLOUD,
 //   CLOUDY,
