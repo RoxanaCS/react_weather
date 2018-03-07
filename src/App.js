@@ -4,6 +4,7 @@ import { Grid, Row, Col } from 'react-flexbox-grid';
 import Paper from 'material-ui/Paper';
 import AppBar from 'material-ui/AppBar';
 import LocationList from './components/LocationList';
+import ForecastExtended from './components/ForecastExtended';
 import './App.css'; // estilo siempre va al final
 
 const cities = [
@@ -16,10 +17,18 @@ const cities = [
 ];
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      city: null
+    };
+  }
   handleSelectionLocation = (city) => {
-    console.log('handleSelectionLocation');
+    this.setState({city});
+    console.log(`handleSelectionLocation ${city}`);
   }
   render() {
+    const { city } = this.state;
     return (
       <MuiThemeProvider>
         <Grid>
@@ -38,7 +47,9 @@ class App extends Component {
             <Col xs={12} md={6}>
               <Paper zDepth={4}>
                 <div className= "detail">
-
+                  {city === null ? <h2>No se seleccionó ninguna ciudad</h2> :
+                    <ForecastExtended city={ city }></ForecastExtended>
+                  }
                 </div>
               </Paper>
             </Col>

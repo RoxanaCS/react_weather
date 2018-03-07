@@ -16,7 +16,7 @@ import PropTypes from 'prop-types';
 // )
 // reformulado se ve así
 const Location = ({city}) => (
-  <div>
+  <div className='locationCont'>
     <h1>{city}</h1>
   </div>
 );
