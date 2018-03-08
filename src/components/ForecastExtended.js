@@ -40,12 +40,15 @@ class ForecastExtended extends Component {
       const forecastData = transformForecast(
         weather_data);
       console.log(forecastData);
-      this.setState({forecastData})
+      this.setState({forecastData});
     });
   }
 
-  renderForecastItemDays() {
-    return 'Render Items';
+  renderForecastItemDays(forecastData) {
+    return forecastData.map(forecast => (
+      <ForecastItem key = {`${forecast.weekDay}${forecast.hour}`} weekDay = {forecast.weekDay} hour = {forecast.hour} data = {forecast.data}>
+      </ForecastItem>
+    ));
     // return days.map(day => (
     //   <ForecastItem key = {day} hour = {10} weekDay = {day} data = {data}></ForecastItem>
     // ));
@@ -60,7 +63,7 @@ class ForecastExtended extends Component {
     return (
       <div>
         <h2 className="forecastTitle">Pronóstico extendido para {city}</h2>
-        {forecastData !== null ? this.renderForecastItemDays() :
+        {forecastData !== null ? this.renderForecastItemDays(forecastData) :
           this.renderProgress()}
       </div>
     );
